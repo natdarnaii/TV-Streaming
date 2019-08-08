@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+.button {
+    background-color: #4CAF50 !important;
+    border: none !important;
+    color: white !important;
+    padding: 15px 32px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-size: 16px !important;
+    margin: 4px 0px !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    border-radius: 5px !important;
+    font-family: Mitr !important;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="player">Loading..</div>
+<script src="../../cdn.jwplayer.com/libraries/cMH8KBbl.js"></script>
+
+<script type="text/javascript">
+
+var player = jwplayer('player');
+
+// Trigger error on player setup
+player.setup({
+             file: "https://live.we-play.tv/live/h2/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9OC83LzIwMTkgNzo1NToyNCBBTSZoYXNoX3ZhbHVlPWU4cC9hWmJrQlNtdVNicXlVd3N1TEE9PSZ2YWxpZG1pbnV0ZXM9MjA=",
+             });
+
+// Load custom video file on error
+player.on('error', function() {
+          player.load({
+                    file:"https://live.we-play.tv/live/h2/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9OC83LzIwMTkgNzo1NToyNCBBTSZoYXNoX3ZhbHVlPWU4cC9hWmJrQlNtdVNicXlVd3N1TEE9PSZ2YWxpZG1pbnV0ZXM9MjA=",
+                      image: "https://i.imgur.com/rEBuliQ.jpg"
+                      });
+          player.play();
+          });
+
+/*player.on('buffer', function() {
+        theTimeout = setTimeout(function() {
+        player.load({
+            file:"https://kaido.cdnnaja.com/Bein1-m3u8/playlist.m3u8",
+                      image: "https://i.imgur.com/rEBuliQ.jpg"
+                    });
+            player.play();
+        }, 5000);
+});*/
+
+player.on('play', function() {
+          clearTimeout(theTimeout);
+          });
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120715612-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120715612-1');
+</script>
+
+<button class="button" onclick="goBack()">Go Back</button>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+</body>
+
+</html>
